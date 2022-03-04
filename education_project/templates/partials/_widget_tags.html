@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% load static %}
+<div class="widget-tags">
+						<h3 class="widget-title">Search Tags</h3>
+						{% for tag in tags %}
+						<ul class="tags">
+							<li><a href="{% url 'courses_by_tags' tag.slug %}">{% if tag.slug in request.path %} <b>{{ tag.tag_name }}</b> {% else %} {{ tag.tag_name }} {% endif %}</a></li>
+						</ul>
+						{% endfor %}
+					</div>
