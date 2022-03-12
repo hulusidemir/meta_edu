@@ -21,7 +21,7 @@ class Tag(models.Model):
 class Course(models.Model):
     course_name = models.CharField(max_length=200, unique=False, blank=False, verbose_name="Kurs Adı")
     course_category = models.ForeignKey(Category, null=True, on_delete=models.DO_NOTHING, verbose_name="Kategori")
-    course_tags = models.ManyToManyField(Tag, blank=True, null=True)
+    course_tags = models.ManyToManyField(Tag, blank=True)
     course_description = models.TextField(blank=True, verbose_name="Kurs Açıklaması")
     course_date = models.DateTimeField(default=datetime.datetime.now, verbose_name="Yayımlanma Tarihi")
     course_image = models.ImageField(upload_to='images/%Y/%m/%d/', default='no_image.png', blank=True,
