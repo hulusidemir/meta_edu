@@ -1,5 +1,6 @@
 import datetime
 from django.db import models
+from teachers.models import Teacher
 
 
 class Category(models.Model):
@@ -21,6 +22,7 @@ class Tag(models.Model):
 class Course(models.Model):
     course_name = models.CharField(max_length=200, unique=False, blank=False, verbose_name="Kurs Adı")
     course_category = models.ForeignKey(Category, null=True, on_delete=models.DO_NOTHING, verbose_name="Kategori")
+    course_teacher = models.ForeignKey(Teacher, null=True, on_delete=models.CASCADE, verbose_name="Eğitmen")
     course_tags = models.ManyToManyField(Tag, blank=True)
     course_description = models.TextField(blank=True, verbose_name="Kurs Açıklaması")
     course_date = models.DateTimeField(default=datetime.datetime.now, verbose_name="Yayımlanma Tarihi")
